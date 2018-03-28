@@ -1,0 +1,150 @@
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Exercicio 4</title>
+    </head>
+    <body>
+        <p>4 -Crie um formulário com 10 questões de verdadeiro ou falso. O usuário deve preencher um formulário com as questões, cada questão
+                deve ter dois radio buttons com as respostas possíveis. Ao final do formulário deve existir um botão enviar. Ao clicar no botão deve-se
+                validar as questões, para cada resposta preenchida corretamente deve-se somar 1 ponto, para cada resposta errada ou em branco
+                deve-se somar 0 pontos, e então apresentar a pontuação ao usuário.</p>
+
+
+        <div class="formulario">
+            <div class="questoes">
+                <div class="item">
+                    <p>Pergunta?</p>
+                    <form action="">
+                        <input type="radio" name="questao1" value="v">Verdadeiro<br>
+                        <input type="radio" name="questao1" value="f">Falso<br>
+                    </form>
+                </div>
+                <div class="item">
+                    <p>Pergunta?</p>
+                    <form action="">
+                        <input type="radio" name="questao2" value="v">Verdadeiro<br>
+                        <input type="radio" name="questao2" value="f">Falso<br>
+                    </form>
+                </div>
+                <div class="item">
+                    <p>Pergunta?</p>
+                    <form action="">
+                        <input type="radio" name="questao3" value="v">Verdadeiro<br>
+                        <input type="radio" name="questao3" value="f">Falso<br>
+                    </form>
+                </div>
+                <div class="item">
+                    <p>Pergunta?</p>
+                    <form action="">
+                        <input type="radio" name="questao4" value="v">Verdadeiro<br>
+                        <input type="radio" name="questao4" value="f">Falso<br>
+                    </form>
+                </div>
+                <div class="item">
+                    <p>Pergunta?</p>
+                    <form action="">
+                        <input type="radio" name="questao5" value="v">Verdadeiro<br>
+                        <input type="radio" name="questao5" value="f">Falso<br>
+                    </form>
+                </div>
+                <div class="item">
+                    <p>Pergunta?</p>
+                    <form action="">
+                        <input type="radio" name="questao6" value="v">Verdadeiro<br>
+                        <input type="radio" name="questao6" value="f">Falso<br>
+                    </form>
+                </div>
+                <div class="item">
+                    <p>Pergunta?</p>
+                    <form action="">
+                        <input type="radio" name="questao7" value="v">Verdadeiro<br>
+                        <input type="radio" name="questao7" value="f">Falso<br>
+                    </form>
+                </div>
+                <div class="item">
+                    <p>Pergunta?</p>
+                    <form action="">
+                        <input type="radio" name="questao8" value="v">Verdadeiro<br>
+                        <input type="radio" name="questao8" value="f">Falso<br>
+                    </form>
+                </div>
+                <div class="item">
+                    <p>Pergunta?</p>
+                    <form action="">
+                        <input type="radio" name="questao9" value="v">Verdadeiro<br>
+                        <input type="radio" name="questao9" value="f">Falso<br>
+                    </form>
+                </div>
+                <div class="item">
+                    <p>Pergunta?</p>
+                    <form action="">
+                        <input type="radio" name="questao10" value="v">Verdadeiro<br>
+                        <input type="radio" name="questao10" value="f">Falso<br>
+                    </form>
+                </div>
+                <div class="button">
+                    <p><button class="button">Enviar</button></p>
+                </div>
+            </div>
+        </div>
+        <div id="resultado">
+        </div>
+
+
+        <style>
+
+            .formulario{
+                display: flex;
+                flex-direction: column;
+            }
+            .item p{
+                margin-bottom: 0px;
+            }
+            .button{
+                width: 150px;
+                border-radius: 5px;
+                background-color: #2196F3 !important;
+                color: #fff;
+                font-family: arial;
+                font-size: 15px;
+                height: 35px;
+            }
+
+        </style>
+
+        <script>
+
+            var formulario = document.querySelector('#form');
+
+            document.querySelector('.button').addEventListener('click', function () {
+                var total = 0;
+
+                if (document.querySelector('input[name="questao1"]').checked && document.querySelector('input[name="questao1"  ]:checked').value == 'v' )
+                    total++;
+                if (document.querySelector('input[name="questao2"]').checked && document.querySelector('input[name="questao2"  ]:checked').value == 'v')
+                     total++;
+                if (document.querySelector('input[name="questao3"]').checked && document.querySelector('input[name="questao3"  ]:checked').value == 'v')
+                    total++;
+                if (document.querySelector('input[name="questao4"]').checked && document.querySelector('input[name="questao4"  ]:checked').value == 'v')
+                    total++;
+                if (document.querySelector('input[name="questao5"]').checked && document.querySelector('input[name="questao5"  ]:checked').value == 'v')
+                    total++;
+                if (document.querySelector('input[name="questao6"]').checked && document.querySelector('input[name="questao6"  ]:checked').value == 'v')
+                    total++;
+                if (document.querySelector('input[name="questao7"]').checked && document.querySelector('input[name="questao7"  ]:checked').value == 'v')
+                    total++;
+                if (document.querySelector('input[name="questao8"]').checked && document.querySelector('input[name="questao8"  ]:checked').value == 'v')
+                    total++;
+                if (document.querySelector('input[name="questao9"]').checked && document.querySelector('input[name="questao9"  ]:checked').value == 'v')
+                    total++;
+                if (document.querySelector('input[name="questao10"]').checked && document.querySelector('input[name="questao10"]:checked').value == 'v')
+                    total++;
+
+                document.getElementById('resultado').innerHTML = 'Seu resultado foi ' + total + ' pontos!'
+
+            });
+
+        </script>
+
+    </body>
+</html>
