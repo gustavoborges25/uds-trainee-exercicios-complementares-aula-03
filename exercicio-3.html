@@ -1,0 +1,142 @@
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Exercicio 3</title>
+    </head>
+    <body>
+        <p>3 -Vamos criar um gerador de cartão de visita. O usuário deve preencher um formulário com os campos nome, telefone e endereço.
+                Ao enviar o formulário deve-se apresentar uma div formatada como um cartão de visita apresentando as informações preenchidas
+                previamente.</p>
+
+
+        <div class="formulario">
+            <div class="itensDoFormulario">
+                <div class="item">
+                    <label for="nome">Nome:</label>
+                        <input type="text" id="nomeInformado" />
+                </div>
+                <div class="item">
+                    <label for="telefone">Telefone:</label>
+                        <input type="text" id="telefoneInformado" />
+                </div>
+                <div class="item">
+                    <label for="endereco">Endereço:</label>
+                        <input type="text" id="enderecoInformado" />
+                </div>
+                <div class="button">
+                    <p><button class="button">Gerar cartão</button></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cartaoResultado">
+            <div class="cartaoVisita">
+                <div class="itens">
+                    <div class="imagem">
+                        <img src="https://avatars2.githubusercontent.com/u/15223014?s=460&v=4" alt="">
+                    </div>
+                    <div class="textos">
+                        <div id="nomeCartao">gustavo borges de camargo</div>
+                        <div id="telefoneCartao">1321312321312</div>
+                        <div id="enderecoCartao">sdkmaskçdmaskmdlkasmdklasmdkla, asidjaskdmla</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <style>
+
+            .formulario{
+                display: flex;
+                justify-content: center;
+            }
+            .itensDoFormulario{
+                width: 500px;
+            }
+            .item{
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            input{
+                width: 100%;
+            }
+            .button{
+                width: 150px;
+                border-radius: 5px;
+                background-color: #2196F3 !important;
+                color: #fff;
+                font-family: arial;
+                font-size: 15px;
+                height: 35px;
+            }
+            .cartaoResultado{
+                height: 200px;
+                display: none;
+                margin-top: 20px;
+                flex-direction: column;
+                align-items: center;
+            }
+            .cartaoVisita{
+                position: relative;
+                height: 100%;
+                width: 500px;
+                background-color: #0095ff;
+            }
+            .itens{
+                height: 100%;
+                display: flex;
+                flex-direction: row;
+            }
+            .textos{
+                display: flex;
+                flex-direction: column;
+                font-family: cursive;
+                font-size: 15px;
+                font-weight: bold;
+                color: #fff;
+            }
+            .imagem{
+                height: 100%;
+                padding-left: 12px;
+                padding-right: 12px;
+
+            }
+            .imagem img{
+                position: relative;
+                top: 13px;
+                max-height: 175px;
+                width: auto;
+                height: auto;
+            }
+            .textos{
+                position: relative;
+                margin-top: -50px;
+                top: 50%;
+                max-height: 175px;
+                width: auto;
+                height: auto;
+            }
+
+        </style>
+
+        <script>
+
+            document.querySelector('.button').addEventListener('click', function () {
+                var nome = document.getElementById('nomeInformado').value;
+                var telefone = document.getElementById('telefoneInformado').value;
+                var endereco = document.getElementById('enderecoInformado').value;
+
+                document.getElementById('nomeCartao').innerHTML = nome;
+                document.getElementById('telefoneCartao').innerHTML = telefone;
+                document.getElementById('enderecoCartao').innerHTML = endereco;
+
+                document.querySelector('.formulario').style.display = 'none';
+                document.querySelector('.cartaoResultado').style.display = 'flex';
+
+            });
+
+
+        </script>
+
+    </body>
+</html>
