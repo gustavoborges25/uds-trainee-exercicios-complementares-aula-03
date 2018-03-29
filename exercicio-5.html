@@ -1,0 +1,146 @@
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Exercicio 5</title>
+    </head>
+    <body>
+        <p>5 -Vamos criar nosso primeiro jogo! O usuário começa o jogo com 100 pontos. Deve ser apresentado 2 radio buttons, com os valores par e impar, e um
+                campo de texto valor da aposta. Após selecionar preencher todos os campos, o usuário deve clicar em um botão jogar, então o sistema deve sortear
+                um número aleatório de 1 à 30, e verificar se este número é par ou impar. Caso o número seja de acordo com o que o usuário apostou, deve-se somar
+                a quantidade de pontos apostados ao seus pontos globais, caso seja diferente deve-se subtrair este valor. Não deve ser possível clicar no botão jogar:/
+                Não deve ser aceito nada além de valores numéricos, maior que zero, no campo valor da aposta.
+                O sistema deve apresentar ao usuário qual número foi sorteado e informa-lo se o número é par ou impar.
+                Não deve ser possível clicar no botão jogar
+                Caso o usuário não possua ou tente apostar uma quantidade de pontos maior do que possui.
+                Caso o usuário não informe em qual tipo de número quer apostar.</p>
+
+        <div class="saldo">
+            <p>Saldo Atual:</p>
+            <div id="saldo">
+            </div>
+            <p>pontos</p>
+        </div>
+
+        <div class="formulario">
+            <div class="questoes">
+                <div class="item">
+                    <p>Escolha uma opção:</p>
+                    <form action="">
+                        <input type="radio" id="parOuImpar" name="parOuImpar" value="par">Par<br>
+                        <input type="radio" id="parOuImpar" name="parOuImpar" value="impar">Impar<br>
+                    </form>
+                </div>
+                <div class="aposta">
+                    <label for="telefone">Valor da aposta:</label>
+                    <input type="text" id="valorAposta" />
+                </div>
+
+                <div class="button">
+                    <p><button class="button">Jogar</button></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="resultado">
+            <p>Numero sorteado:</p>
+            <div id="numeroSorteado">
+            </div>
+            <div id="textoResultado">
+            </div>
+        </div>
+
+
+
+        <style>
+
+            .formulario{
+                display: flex;
+                flex-direction: column;
+            }
+             p{
+                margin-bottom: 0px;
+            }
+            .saldo{
+                display: flex;
+                flex-direction: row;
+            }
+            .saldo #saldo{
+                margin-top: 15px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .button{
+                width: 150px;
+                border-radius: 5px;
+                background-color: #2196F3 !important;
+                color: #fff;
+                font-family: arial;
+                font-size: 15px;
+                height: 35px;
+            }
+
+        </style>
+
+        <script>
+
+            var saldo = 100;
+            document.getElementById('saldo').innerHTML = saldo;
+
+            function getRadioValor(name){
+                var rads = document.getElementsByName(name);
+                for(var i = 0; i < rads.length; i++){
+                    console.log(rads[i].value);
+                    if(rads[i].checked)
+                        return rads[i].value;
+                  }
+                return null;
+             }
+            function VerificaSeNumerico( valor ){
+               return !isNaN( parseFloat( valor ) ) && isFinite( valor );
+            }
+
+            document.querySelector('.button').addEventListener('click', function () {
+                var valorRadioButton = getRadioValor('parOuImpar');
+                var valorAposta = parseInt( document.getElementById('valorAposta').value );
+
+                if (getRadioValor('parOuImpar') == null) {
+                    alert( "Não selecionou entre para ou impar !");
+                    return
+                }
+                if (valorAposta == "") {
+                    alert( "Não informou valor da aposta !");
+                    return
+                }
+                if (!VerificaSeNumerico(valorAposta)) {
+                    alert( "Não informou valor da aposta Numérico !");
+                    return
+                }
+                if (valorAposta > saldo) {
+                    alert( "Saldo insuficiente para aposta !");
+                    return
+                }
+
+                var numeroSorteado = Math.floor(Math.random() * 30);
+                document.getElementById('numeroSorteado').innerHTML = numeroSorteado;
+
+                var parImpar = 'impar';
+                if (valorRadioButton == 'par'){
+                    parImpar = 'par';
+                }
+
+                if ( ( numeroSorteado % 2 == 0 && parImpar == 'par' ) || (  numeroSorteado % 2 != 0 && parImpar == 'impar' )) {
+                    saldo += valorAposta;
+                    document.getElementById('textoResultado').innerHTML = 'Número ' + parImpar + ' , Parabéns você acertou!';
+                } else {
+                    saldo -= valorAposta;
+                    document.getElementById('textoResultado').innerHTML = 'Número '+ parImpar +' , Que pena você errou!';
+                }
+
+                document.getElementById('saldo').innerHTML = saldo;
+            });
+
+        </script>
+
+    </body>
+</html>
